@@ -5,8 +5,17 @@ using Xunit;
 
 namespace DotNetTDDKataTest
 {
+
     public class FizzBuzzTest
     {
+        private FizzBuzz fizzBuzz;
+
+        public FizzBuzzTest()
+        {
+            fizzBuzz = new FizzBuzz();
+        }
+
+
         [Theory]
         [InlineData(100)]
         [InlineData(50)]
@@ -14,10 +23,6 @@ namespace DotNetTDDKataTest
         [InlineData(97)]
         public void GiveExpectedCount(int count)
         {
-            //arrange
-
-            var fizzBuzz = new FizzBuzz();
-
             //act
             var result = fizzBuzz.Play(count);
 
@@ -34,10 +39,6 @@ namespace DotNetTDDKataTest
         [InlineData(100, 17, 39, 89)]
         public void GiveFizzBuzzInExpectedIndex(int count, int fizzIndex, int buzzIndex, int fizzBuzzIndex)
         {
-            //arrange
-
-            var fizzBuzz = new FizzBuzz();
-
             //act
             var result = fizzBuzz.Play(count);
 
@@ -45,7 +46,6 @@ namespace DotNetTDDKataTest
             result[fizzIndex].Should().Be(FizzBuzz.Fizz);
             result[buzzIndex].Should().Be(FizzBuzz.Buzz);
             result[fizzBuzzIndex].Should().Be($"{FizzBuzz.Fizz}{FizzBuzz.Buzz}");
-
         }
 
         [Theory]
@@ -54,10 +54,6 @@ namespace DotNetTDDKataTest
         [InlineData(100, 55, "56")]
         public void GiveTrueNumberInExpectedIndex(int count, int expectedIndex, string trueNumber)
         {
-            //arrange
-
-            var fizzBuzz = new FizzBuzz();
-
             //act
             var result = fizzBuzz.Play(count);
 
@@ -73,10 +69,6 @@ namespace DotNetTDDKataTest
         [InlineData(-1)]
         public void GiveInvalidNumberThrowArgumentOutOfRangeException(int count)
         {
-            //arrange
-
-            var fizzBuzz = new FizzBuzz();
-
             //act
             var action = () => fizzBuzz.Play(count);
 
